@@ -2,6 +2,7 @@ package com.maximcuker.notesmvi.business.data.network.implementation
 
 import com.maximcuker.notesmvi.business.data.network.abstraction.NoteNetworkDataSource
 import com.maximcuker.notesmvi.business.domain.model.Note
+import com.maximcuker.notesmvi.framework.datasource.network.abstraction.NoteFirestoreService
 import javax.inject.Inject
 import javax.inject.Singleton
 

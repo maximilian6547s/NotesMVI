@@ -2,6 +2,7 @@ package com.maximcuker.notesmvi.business.data.cache.implementation
 
 import com.maximcuker.notesmvi.business.data.cache.abstraction.NoteCacheDataSource
 import com.maximcuker.notesmvi.business.domain.model.Note
+import com.maximcuker.notesmvi.framework.datasource.cache.abstraction.NoteDaoService
 import javax.inject.Inject
 import javax.inject.Singleton
 
