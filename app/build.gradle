@@ -53,6 +53,8 @@ dependencies {
 
     //dependencies
     implementation Dependencies.dagger
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofit_gson
 
     //Annotation processing
     kapt AnnotationProcessing.dagger_compiler
