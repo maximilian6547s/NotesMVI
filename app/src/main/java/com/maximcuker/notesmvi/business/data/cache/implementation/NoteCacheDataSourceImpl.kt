@@ -26,7 +26,7 @@ constructor(
     }
 
     override suspend fun updateNote(
-        primaryKey: String, newTitle: String, newBody: String
+        primaryKey: String, newTitle: String, newBody: String?
     ): Int {
         return noteDaoService.updateNote(primaryKey, newTitle, newBody)
     }
@@ -39,7 +39,7 @@ constructor(
         TODO("Check filterAndOrder and make query")
     }
 
-    override suspend fun searchNotesById(id: String): Note? {
+    override suspend fun searchNoteById(id: String): Note? {
         return noteDaoService.searchNoteById(id)
     }
 

@@ -10,11 +10,11 @@ interface NoteCacheDataSource {
 
     suspend fun deleteNotes(notes: List<Note>): Int
 
-    suspend fun updateNote(primaryKey: String, newTitle: String, newBody: String): Int
+    suspend fun updateNote(primaryKey: String, newTitle: String, newBody: String?): Int
 
     suspend fun searchNotes(query: String, filterAndOrder: String, page: Int): List<Note>
 
-    suspend fun searchNotesById(primaryKey: String): Note?
+    suspend fun searchNoteById(primaryKey: String): Note?
 
     suspend fun getNumNotes(): Int
 
