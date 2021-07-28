@@ -40,6 +40,10 @@ android {
         jvmTarget = Java.java_version
     }
 
+    sourceSets {
+        test.resources.srcDirs += 'src/test/res'
+    }
+
     testOptions {
         unitTests.all {
             useJUnitPlatform()
@@ -84,5 +88,6 @@ dependencies {
     testImplementation TestDependencies.jupiter_params
     testImplementation TestDependencies.junit4
     testRuntimeOnly TestDependencies.jupiter_engine
+    testImplementation Dependencies.retrofit_gson
 
 }
