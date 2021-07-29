@@ -53,6 +53,10 @@ constructor(
         return failOrSuccess
     }
 
+    override suspend fun getAllNotes(): List<Note> {
+        return ArrayList(notesData.values)
+    }
+
     override suspend fun updateNote(
         primaryKey: String,
         newTitle: String,
