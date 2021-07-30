@@ -9,7 +9,7 @@ import com.maximcuker.notesmvi.business.domain.state.DataState
 import com.maximcuker.notesmvi.business.interactors.notelist.SearchNotes.Companion.SEARCH_NOTES_NO_MATCHING_RESULTS
 import com.maximcuker.notesmvi.business.interactors.notelist.SearchNotes.Companion.SEARCH_NOTES_SUCCESS
 import com.maximcuker.notesmvi.di.DependencyContainer
-import com.maximcuker.notesmvi.framework.datasource.database.ORDER_BY_ASC_DATE_UPDATED
+import com.maximcuker.notesmvi.framework.datasource.cache.database.ORDER_BY_ASC_DATE_UPDATED
 import com.maximcuker.notesmvi.framework.presentation.notelist.state.NoteListStateEvent
 import com.maximcuker.notesmvi.framework.presentation.notelist.state.NoteListViewState
 import kotlinx.coroutines.InternalCoroutinesApi

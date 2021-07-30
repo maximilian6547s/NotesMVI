@@ -3,7 +3,7 @@ package com.maximcuker.notesmvi.business.data.cache
 import com.maximcuker.notesmvi.business.data.cache.abstraction.NoteCacheDataSource
 import com.maximcuker.notesmvi.business.domain.model.Note
 import com.maximcuker.notesmvi.business.domain.util.DateUtil
-import com.maximcuker.notesmvi.framework.datasource.database.NOTE_PAGINATION_PAGE_SIZE
+import com.maximcuker.notesmvi.framework.datasource.cache.database.NOTE_PAGINATION_PAGE_SIZE
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 

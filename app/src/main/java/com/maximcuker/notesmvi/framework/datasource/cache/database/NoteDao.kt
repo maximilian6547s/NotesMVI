@@ -1,4 +1,4 @@
-package com.maximcuker.notesmvi.framework.datasource.database
+package com.maximcuker.notesmvi.framework.datasource.cache.database
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -5,7 +5,7 @@ import com.maximcuker.notesmvi.business.data.network.abstraction.NoteNetworkData
 import com.maximcuker.notesmvi.business.domain.model.Note
 import com.maximcuker.notesmvi.business.domain.model.NoteFactory
 import com.maximcuker.notesmvi.di.DependencyContainer
-import com.maximcuker.notesmvi.framework.datasource.database.ORDER_BY_ASC_DATE_UPDATED
+import com.maximcuker.notesmvi.framework.datasource.cache.database.ORDER_BY_ASC_DATE_UPDATED
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
