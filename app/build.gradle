@@ -13,6 +13,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -31,7 +32,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [enableCrashReporting:"true"]
         }
+        debug {
+            minifyEnabled false
+            manifestPlaceholders = [enableCrashReporting:"false"]
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -61,14 +68,24 @@ dependencies {
     implementation Dependencies.kotlin_coroutines
     implementation Dependencies.kotlin_coroutines_android
     implementation Dependencies.kotlin_coroutines_play_services
-    implementation Dependencies.room_runtime
-    implementation Dependencies.room_ktx
 
 
     //dependencies
     implementation Dependencies.dagger
     implementation Dependencies.retrofit
     implementation Dependencies.retrofit_gson
+    implementation Dependencies.navigation_runtime
+    implementation Dependencies.navigation_ui
+    implementation Dependencies.navigation_fragment
+    implementation Dependencies.navigation_dynamic
+    implementation Dependencies.material_dialogs
+    implementation Dependencies.material_dialogs_input
+    implementation Dependencies.play_core
+    implementation Dependencies.leak_canary
+    implementation Dependencies.room_runtime
+    implementation Dependencies.room_ktx
+    implementation Dependencies.markdown_processor
+    implementation AndroidTestDependencies.idling_resource
 
     //Annotation processing
     kapt AnnotationProcessing.dagger_compiler
@@ -94,4 +111,16 @@ dependencies {
     testRuntimeOnly TestDependencies.jupiter_engine
     testImplementation Dependencies.retrofit_gson
 
+    androidTestImplementation AndroidTestDependencies.kotlin_test
+    androidTestImplementation AndroidTestDependencies.coroutines_test
+    androidTestImplementation AndroidTestDependencies.espresso_core
+    androidTestImplementation AndroidTestDependencies.espresso_contrib
+    androidTestImplementation AndroidTestDependencies.idling_resource
+    androidTestImplementation AndroidTestDependencies.mockk_android
+    androidTestImplementation AndroidTestDependencies.test_runner
+    androidTestImplementation AndroidTestDependencies.test_rules
+    androidTestImplementation AndroidTestDependencies.text_core_ktx
+    androidTestImplementation AndroidTestDependencies.navigation_testing
+    debugImplementation AndroidTestDependencies.fragment_testing
+    kaptAndroidTest  AnnotationProcessing.dagger_compiler
 }
