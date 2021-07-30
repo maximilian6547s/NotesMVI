@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "494445385859",
+    "project_id": "notesmvi",
+    "storage_bucket": "notesmvi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494445385859:android:a81dc5542bce37fc7aa3b6",
+        "android_client_info": {
+          "package_name": "com.maximcuker.notesmvi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494445385859-m0g5k1qmep95kkidib1mdt25efc8tsot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCpxRs7wcYiWSFcFm3uW4sT6dzihkve6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494445385859-m0g5k1qmep95kkidib1mdt25efc8tsot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
