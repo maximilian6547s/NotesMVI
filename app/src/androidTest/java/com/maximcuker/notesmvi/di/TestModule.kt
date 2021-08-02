@@ -3,7 +3,9 @@ package com.maximcuker.notesmvi.di
 import androidx.room.Room
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.maximcuker.notesmvi.business.domain.model.NoteFactory
 import com.maximcuker.notesmvi.framework.datasource.cache.database.NoteDatabase
+import com.maximcuker.notesmvi.framework.datasource.data.NoteDataFactory
 import com.maximcuker.notesmvi.framework.presentation.TestBaseApplication
 import dagger.Module
 import dagger.Provides
@@ -45,6 +47,16 @@ object TestModule {
         val firestore = FirebaseFirestore.getInstance()
         firestore.firestoreSettings = settings
         return firestore
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideNoteDataFactory(
+        application: TestBaseApplication,
+        noteFactory: NoteFactory
+    ): NoteDataFactory {
+        return NoteDataFactory(application, noteFactory)
     }
 
 }

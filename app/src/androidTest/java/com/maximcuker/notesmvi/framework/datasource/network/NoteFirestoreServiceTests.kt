@@ -8,10 +8,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.maximcuker.notesmvi.business.domain.model.NoteFactory
 import com.maximcuker.notesmvi.di.TestAppComponent
 import com.maximcuker.notesmvi.framework.BaseTest
+import com.maximcuker.notesmvi.framework.datasource.data.NoteDataFactory
 import com.maximcuker.notesmvi.framework.datasource.network.abstraction.NoteFirestoreService
 import com.maximcuker.notesmvi.framework.datasource.network.implementation.NoteFirestoreServiceImpl
+import com.maximcuker.notesmvi.framework.datasource.network.implementation.NoteFirestoreServiceImpl.Companion.NOTES_COLLECTION
+import com.maximcuker.notesmvi.framework.datasource.network.implementation.NoteFirestoreServiceImpl.Companion.USER_ID
 import com.maximcuker.notesmvi.framework.datasource.network.util.NetworkMapper
 import com.maximcuker.notesmvi.framework.presentation.TestBaseApplication
+import com.maximcuker.notesmvi.util.printLogD
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.runBlocking
@@ -22,6 +26,7 @@ import org.junit.runner.RunWith
 import java.util.*
 import javax.inject.Inject
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 @ExperimentalCoroutinesApi
 @FlowPreview
@@ -39,7 +44,7 @@ class NoteFirestoreServiceTests: BaseTest(){
     lateinit var firebaseAuth: FirebaseAuth
 
     @Inject
-    lateinit var noteFactory: NoteFactory
+    lateinit var noteDataFactory: NoteDataFactory
 
     @Inject
     lateinit var networkMapper: NetworkMapper
@@ -47,6 +52,7 @@ class NoteFirestoreServiceTests: BaseTest(){
     init {
         injectTest()
         signIn()
+        insertTestData()
     }
 
     @Before
@@ -65,9 +71,21 @@ class NoteFirestoreServiceTests: BaseTest(){
         ).await()
     }
 
+    private fun insertTestData() {
+        val entityList = networkMapper.noteListToEntityList(
+            noteDataFactory.produceListOfNotes()
+        )
+        for (entity in entityList) {
+            firestore.collection(NOTES_COLLECTION)
+                .document(USER_ID)
+                .collection(NOTES_COLLECTION)
+                .document(entity.id)
+                .set(entity)
+        }
+    }
     @Test
     fun insertSingleNote_CBS() = runBlocking{
-        val note = noteFactory.createSingleNote(
+        val note = noteDataFactory.createSingleNote(
             UUID.randomUUID().toString(),
             UUID.randomUUID().toString(),
             UUID.randomUUID().toString()
@@ -78,6 +96,13 @@ class NoteFirestoreServiceTests: BaseTest(){
         val searchResult = noteFirestoreService.searchNote(note)
 
         assertEquals(note, searchResult)
+    }
+
+    @Test
+    fun queryAllnotes() = runBlocking {
+        val notes = noteFirestoreService.getAllNotes()
+        printLogD("FirebaseServiceTest", "notes : ${notes.size}")
+        assertTrue { notes.size > 10 }
     }
 
     companion object{
