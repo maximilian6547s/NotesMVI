@@ -1,6 +1,7 @@
 package com.maximcuker.notesmvi.business.data.cache.abstraction
 
 import com.maximcuker.notesmvi.business.domain.model.Note
+import java.sql.Timestamp
 
 interface NoteCacheDataSource {
 
@@ -12,7 +13,7 @@ interface NoteCacheDataSource {
 
     suspend fun getAllNotes(): List<Note>
 
-    suspend fun updateNote(primaryKey: String, newTitle: String, newBody: String?): Int
+    suspend fun updateNote(primaryKey: String, newTitle: String, newBody: String?, timestamp: String?): Int
 
     suspend fun searchNotes(query: String, filterAndOrder: String, page: Int): List<Note>
 

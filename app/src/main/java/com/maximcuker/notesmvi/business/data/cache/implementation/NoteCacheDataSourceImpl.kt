@@ -3,6 +3,7 @@ package com.maximcuker.notesmvi.business.data.cache.implementation
 import com.maximcuker.notesmvi.business.data.cache.abstraction.NoteCacheDataSource
 import com.maximcuker.notesmvi.business.domain.model.Note
 import com.maximcuker.notesmvi.framework.datasource.cache.abstraction.NoteDaoService
+import java.sql.Timestamp
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -30,9 +31,9 @@ constructor(
     }
 
     override suspend fun updateNote(
-        primaryKey: String, newTitle: String, newBody: String?
+        primaryKey: String, newTitle: String, newBody: String?, timestamp: String?
     ): Int {
-        return noteDaoService.updateNote(primaryKey, newTitle, newBody)
+        return noteDaoService.updateNote(primaryKey, newTitle, newBody, timestamp)
     }
 
     override suspend fun searchNotes(

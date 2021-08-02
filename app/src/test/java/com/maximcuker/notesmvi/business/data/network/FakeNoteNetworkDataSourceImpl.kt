@@ -2,14 +2,23 @@ package com.maximcuker.notesmvi.business.data.network
 
 import com.maximcuker.notesmvi.business.data.network.abstraction.NoteNetworkDataSource
 import com.maximcuker.notesmvi.business.domain.model.Note
+import com.maximcuker.notesmvi.business.domain.util.DateUtil
 
 class FakeNoteNetworkDataSourceImpl
 constructor(
     private val notesData: HashMap<String, Note>,
-    private val deletedNotesData: HashMap<String, Note>
+    private val deletedNotesData: HashMap<String, Note>,
+    private val dateUtil: DateUtil
 ) : NoteNetworkDataSource {
 
     override suspend fun insertOrUpdateNote(note: Note) {
+        val n = Note(
+            id = note.id,
+            title = note.title,
+            body = note.body,
+            created_at = note.created_at,
+            updated_at = dateUtil.getCurrentTimestamp(),
+        )
         notesData.put(note.id, note)
     }
 
