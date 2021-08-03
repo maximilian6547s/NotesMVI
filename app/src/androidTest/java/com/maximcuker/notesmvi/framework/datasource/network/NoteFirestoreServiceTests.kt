@@ -1,7 +1,5 @@
 package com.maximcuker.notesmvi.framework.datasource.network
 
-import android.content.Context
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,7 +13,6 @@ import com.maximcuker.notesmvi.framework.datasource.network.implementation.NoteF
 import com.maximcuker.notesmvi.framework.datasource.network.implementation.NoteFirestoreServiceImpl.Companion.NOTES_COLLECTION
 import com.maximcuker.notesmvi.framework.datasource.network.implementation.NoteFirestoreServiceImpl.Companion.USER_ID
 import com.maximcuker.notesmvi.framework.datasource.network.util.NetworkMapper
-import com.maximcuker.notesmvi.framework.presentation.TestBaseApplication
 import com.maximcuker.notesmvi.util.printLogD
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

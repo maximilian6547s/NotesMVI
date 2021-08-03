@@ -29,7 +29,7 @@ constructor(
 
     fun createNoteList(numNotes: Int) : List<Note> {
         val list: ArrayList<Note> = ArrayList()
-        for (i in 0..numNotes) {
+        for (i in 1..numNotes) {
             list.add(
                 createSingleNote(
                     id = null,
