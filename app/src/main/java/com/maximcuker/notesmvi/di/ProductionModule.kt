@@ -1,9 +1,12 @@
 package com.maximcuker.notesmvi.di
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import com.google.firebase.firestore.FirebaseFirestore
 import com.maximcuker.notesmvi.framework.presentation.BaseApplication
 import com.maximcuker.notesmvi.framework.datasource.cache.database.NoteDatabase
+import com.maximcuker.notesmvi.framework.datasource.preferences.PreferenceKeys
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -37,5 +40,17 @@ object ProductionModule {
         return FirebaseFirestore.getInstance()
     }
 
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideSharedPreferences(
+        application: BaseApplication
+    ): SharedPreferences {
+        return application
+            .getSharedPreferences(
+                PreferenceKeys.NOTE_PREFERENCES,
+                Context.MODE_PRIVATE
+            )
+    }
 
 }

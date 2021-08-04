@@ -86,6 +86,8 @@ dependencies {
     implementation Dependencies.room_ktx
     implementation Dependencies.markdown_processor
     implementation AndroidTestDependencies.idling_resource
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //Annotation processing
     kapt AnnotationProcessing.dagger_compiler
