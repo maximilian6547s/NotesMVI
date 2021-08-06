@@ -23,6 +23,7 @@ import com.maximcuker.notesmvi.framework.datasource.cache.util.CacheMapper
 import com.maximcuker.notesmvi.framework.datasource.network.abstraction.NoteFirestoreService
 import com.maximcuker.notesmvi.framework.datasource.network.implementation.NoteFirestoreServiceImpl
 import com.maximcuker.notesmvi.framework.datasource.network.util.NetworkMapper
+import com.maximcuker.notesmvi.framework.presentation.splash.NoteNetworkSyncManager
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -203,5 +204,15 @@ object AppModule {
             RestoreDeletedNote(noteCacheDataSource, noteNetworkDataSource),
             DeleteMultipleNotes(noteCacheDataSource, noteNetworkDataSource)
         )
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideNoteNetworkSyncManager(
+        syncNotes: SyncNotes,
+        syncDeletedNotes: SyncDeletedNotes
+    ): NoteNetworkSyncManager {
+        return NoteNetworkSyncManager(syncNotes, syncDeletedNotes)
     }
 }

@@ -6,6 +6,7 @@ import com.maximcuker.notesmvi.business.domain.model.NoteFactory
 import com.maximcuker.notesmvi.business.interactors.notedetail.NoteDetailInteractors
 import com.maximcuker.notesmvi.business.interactors.notelist.NoteListInteractors
 import com.maximcuker.notesmvi.framework.presentation.common.NoteViewModelFactory
+import com.maximcuker.notesmvi.framework.presentation.splash.NoteNetworkSyncManager
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,6 +24,7 @@ object NoteViewModelModule {
     fun provideNoteViewModelFactory(
         noteListInteractors: NoteListInteractors,
         noteDetailInteractors: NoteDetailInteractors,
+        noteNetworkSyncManager: NoteNetworkSyncManager,
         noteFactory: NoteFactory,
         editor: SharedPreferences.Editor,
         sharedPreferences: SharedPreferences
@@ -30,6 +32,7 @@ object NoteViewModelModule {
         return NoteViewModelFactory(
             noteListInteractors = noteListInteractors,
             noteDetailInteractors = noteDetailInteractors,
+            noteNetworkSyncManager = noteNetworkSyncManager,
             noteFactory = noteFactory,
             editor = editor,
             sharedPreferences = sharedPreferences

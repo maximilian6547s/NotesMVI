@@ -8,6 +8,7 @@ import com.maximcuker.notesmvi.business.interactors.notedetail.NoteDetailInterac
 import com.maximcuker.notesmvi.business.interactors.notelist.NoteListInteractors
 import com.maximcuker.notesmvi.framework.presentation.notedetail.NoteDetailViewModel
 import com.maximcuker.notesmvi.framework.presentation.notelist.NoteListViewModel
+import com.maximcuker.notesmvi.framework.presentation.splash.NoteNetworkSyncManager
 import com.maximcuker.notesmvi.framework.presentation.splash.SplashViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -23,6 +24,7 @@ class NoteViewModelFactory
 constructor(
     private val noteListInteractors: NoteListInteractors,
     private val noteDetailInteractors: NoteDetailInteractors,
+    private val noteNetworkSyncManager: NoteNetworkSyncManager,
     private val noteFactory: NoteFactory,
     private val editor: SharedPreferences.Editor,
     private val sharedPreferences: SharedPreferences
@@ -47,7 +49,7 @@ constructor(
             }
 
             SplashViewModel::class.java -> {
-                SplashViewModel() as T
+                SplashViewModel(noteNetworkSyncManager) as T
             }
 
             else -> {
