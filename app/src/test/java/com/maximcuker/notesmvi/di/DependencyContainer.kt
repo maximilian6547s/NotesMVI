@@ -22,7 +22,6 @@ class DependencyContainer {
     lateinit var noteCacheDataSource: NoteCacheDataSource
     lateinit var noteFactory: NoteFactory
     lateinit var noteDataFactory: NoteDataFactory
-    private var notesData: HashMap<String, Note> = HashMap()
 
     init {
         isUnitTest = true // for Logger.kt
@@ -31,18 +30,19 @@ class DependencyContainer {
     fun build() {
         this.javaClass.classLoader?.let {classLoader ->
             noteDataFactory = NoteDataFactory(classLoader)
-
-            //fake data set
-            notesData = noteDataFactory.produceHashMapOfNotes(noteDataFactory.produceListOfNotes())
         }
         noteFactory = NoteFactory(dateUtil)
         noteNetworkDataSource = FakeNoteNetworkDataSourceImpl(
-            notesData = notesData,
+            notesData = noteDataFactory.produceHashMapOfNotes(
+                noteDataFactory.produceListOfNotes()
+            ),
             deletedNotesData = HashMap(),
             dateUtil =  dateUtil
         )
         noteCacheDataSource = FakeNoteCacheDataSourceImpl(
-            notesData = notesData,
+            notesData = noteDataFactory.produceHashMapOfNotes(
+                noteDataFactory.produceListOfNotes()
+            ),
             dateUtil = dateUtil
         )
     }
